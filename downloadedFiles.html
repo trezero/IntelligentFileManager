@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloads Manager</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --danger-color: #e74c3c;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --dark-color: #34495e;
+            --light-color: #ecf0f1;
+            --text-color: #2c3e50;
+            --border-color: #bdc3c7;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        
+        h1 {
+            color: var(--dark-color);
+        }
+        
+        .flex-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        #summary-panel {
+            flex: 1;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        #chart-container {
+            flex: 1;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            height: 300px;
+        }
+        
+        .action-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: 500;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        button.danger {
+            background-color: var(--danger-color);
+        }
+        
+        button.danger:hover {
+            background-color: #c0392b;
+        }
+        
+        button.success {
+            background-color: var(--success-color);
+        }
+        
+        button.success:hover {
+            background-color: #27ae60;
+        }
+        
+        select, input {
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: white;
+        }
+        
+        .search-container {
+            flex-grow: 1;
+            max-width: 400px;
+            position: relative;
+        }
+        
+        .search-container input {
+            width: 100%;
+            padding-left: 32px;
+        }
+        
+        .search-container::before {
+            content: "🔍";
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #95a5a6;
+        }
+        
+        .category-container {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .category-header {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .category-header h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+        
+        .category-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .category-content.expanded {
+            max-height: 2000px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f8f9fa;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .file-actions {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+        }
+        
+        .file-checkbox {
+            transform: scale(1.3);
+            margin-right: 5px;
+        }
+        
+        .recommendation {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: #e8f4fc;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+        
+        .recommendation.delete {
+            background: #fdeded;
+            color: #e74c3c;
+        }
+        
+        .recommendation.move {
+            background: #edf7ee;
+            color: #27ae60;
+        }
+        
+        .recommendation.keep {
+            background: #fef9e7;
+            color: #f39c12;
+        }
+        
+        /* The modal background */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Modal content */
+        .modal-content {
+            background-color: white;
+            border-radius: 8px;
+            width: 500px;
+            max-width: 90%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: modalopen 0.3s;
+        }
+        
+        .modal-header {
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--dark-color);
+            color: white;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        
+        .modal-body {
+            padding: 20px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+        
+        .modal-footer {
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        /* Close button */
+        .close-modal {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        /* Animation */
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .badge.warning {
+            background: var(--warning-color);
+        }
+        
+        .badge.danger {
+            background: var(--danger-color);
+        }
+        
+        .badge.success {
+            background: var(--success-color);
+        }
+        
+        .file-path {
+            font-family: monospace;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 400px;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--dark-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            transform: translateY(20px);
+        }
+        
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .toast.success {
+            background: var(--success-color);
+        }
+        
+        .toast.error {
+            background: var(--danger-color);
+        }
+        
+        @media (max-width: 768px) {
+            .flex-container {
+                flex-direction: column;
+            }
+            
+            .category-header h2 {
+                font-size: 16px;
+            }
+            
+            .file-path {
+                max-width: 200px;
+            }
+            
+            th, td {
+                padding: 8px 10px;
+            }
+            
+            .action-bar {
+                flex-wrap: wrap;
+            }
+            
+            .search-container {
+                max-width: 100%;
+                order: -1;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Downloads Manager</h1>
+        <div class="file-stats">
+            <span class="badge" id="total-count">0 Files</span>
+            <span class="badge warning" id="duplicate-count">0 Duplicates</span>
+        </div>
+    </header>
+    
+    <div class="flex-container">
+        <div id="summary-panel">
+            <h2>Summary</h2>
+            <div id="summary-content">
+                <p>Loading summary...</p>
+            </div>
+        </div>
+        <div id="chart-container">
+            <canvas id="file-chart"></canvas>
+        </div>
+    </div>
+    
+    <div class="action-bar">
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search files...">
+        </div>
+        <select id="category-filter">
+            <option value="all">All Categories</option>
+        </select>
+        <select id="recommendation-filter">
+            <option value="all">All Recommendations</option>
+            <option value="delete">Delete</option>
+            <option value="move">Move</option>
+            <option value="keep">Keep</option>
+        </select>
+        <button id="select-all-btn">Select All</button>
+        <button id="deselect-all-btn">Deselect All</button>
+        <button id="move-selected-btn" class="success">Move Selected</button>
+        <button id="delete-selected-btn" class="danger">Delete Selected</button>
+    </div>
+    
+    <div id="file-categories">
+        <div class="spinner" id="loading-spinner"></div>
+        <!-- Categories will be dynamically inserted here -->
+    </div>
+    
+    <!-- Confirmation Modal -->
+    <div class="modal" id="confirmation-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirm Deletion</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete the following files?</p>
+                <ul id="files-to-delete"></ul>
+                <div style="margin-top: 15px; display: flex; align-items: center;">
+                    <input type="checkbox" id="use-recycle-bin" checked style="margin-right: 8px;">
+                    <label for="use-recycle-bin">Move to Recycle Bin instead of permanent deletion</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancel-delete-btn">Cancel</button>
+                <button id="confirm-delete-btn" class="danger">Delete</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Move Files Modal -->
+    <div class="modal" id="move-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Move Files</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Moving <span id="move-count">0</span> files:</p>
+                <div id="recommendations-container">
+                    <!-- This will be populated with destination mappings -->
+                </div>
+                <div style="margin-top: 15px;">
+                    <button id="add-destination-btn" class="success">Add Another Destination</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancel-move-btn">Cancel</button>
+                <button id="confirm-move-btn" class="success">Move Files</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Folder Selection Modal -->
+    <div class="modal" id="folder-select-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Select Destination Folder</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Select a destination folder for: <strong id="recommendation-name"></strong></p>
+                <div class="folder-tree">
+                    <div class="folder-input-container">
+                        <input type="text" id="folder-path" placeholder="C:\Users\username\Documents\..." style="width: 100%;">
+                    </div>
+                    <div class="common-folders" style="margin-top: 15px;">
+                        <h4>Common Folders:</h4>
+                        <button class="folder-btn" data-path="C:\\Users\\winadmin\\Documents">Documents</button>
+                        <button class="folder-btn" data-path="C:\\Users\\winadmin\\Pictures">Pictures</button>
+                        <button class="folder-btn" data-path="C:\\Users\\winadmin\\Videos">Videos</button>
+                        <button class="folder-btn" data-path="C:\\Users\\winadmin\\Music">Music</button>
+                        <button class="folder-btn" data-path="C:\\Program Files">Program Files</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancel-folder-btn">Cancel</button>
+                <button id="confirm-folder-btn" class="success">Select Folder</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="toast" id="toast"></div>
+    
+    <script src="move_functions.js"></script>
+    <script>
+        // Main data storage
+        let downloadsData = null;
+        let filteredFiles = [];
+        let selectedFiles = new Set();
+        let fileChart = null;
+        
+        // DOM elements
+        const fileCategoriesEl = document.getElementById('file-categories');
+        const spinnerEl = document.getElementById('loading-spinner');
+        const searchInputEl = document.getElementById('search-input');
+        const categoryFilterEl = document.getElementById('category-filter');
+        const recommendationFilterEl = document.getElementById('recommendation-filter');
+        const selectAllBtn = document.getElementById('select-all-btn');
+        const deselectAllBtn = document.getElementById('deselect-all-btn');
+        const moveSelectedBtn = document.getElementById('move-selected-btn');
+        const deleteSelectedBtn = document.getElementById('delete-selected-btn');
+        const confirmationModal = document.getElementById('confirmation-modal');
+        const filesToDeleteEl = document.getElementById('files-to-delete');
+        const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
+        const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+        const closeModalBtn = document.querySelector('.close-modal');
+        const toastEl = document.getElementById('toast');
+        const totalCountEl = document.getElementById('total-count');
+        const duplicateCountEl = document.getElementById('duplicate-count');
+        const summaryContentEl = document.getElementById('summary-content');
+        
+        // Recommendation to destination folder mapping
+        let folderMappings = JSON.parse(localStorage.getItem('folderMappings') || '{}');
+        
+        // Load the JSON data
+        async function loadData() {
+            spinnerEl.style.display = 'block';
+            try {
+                const response = await fetch('claudeDownloadIndex.json');
+                if (!response.ok) {
+                    throw new Error(`Failed to load data: ${response.status} ${response.statusText}`);
+                }
+                downloadsData = await response.json();
+                
+                // Process and display the data
+                processData();
+                renderUI();
+                initializeChart();
+                updateStats();
+                renderSummary();
+                
+                spinnerEl.style.display = 'none';
+            } catch (error) {
+                console.error('Error loading data:', error);
+                showToast(`Error loading data: ${error.message}. This app requires running with a web server like the provided Python script.`, 'error');
+                spinnerEl.style.display = 'none';
+            }
+        }
+        
+        // Process the data for easier use
+        function processData() {
+            filteredFiles = [];
+            
+            // Add all category names to the filter dropdown
+            categoryFilterEl.innerHTML = '<option value="all">All Categories</option>';
+            
+            for (const category in downloadsData.categories) {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = formatCategoryName(category);
+                categoryFilterEl.appendChild(option);
+                
+                // Process each file
+                downloadsData.categories[category].files.forEach(file => {
+                    const fileObj = {
+                        ...file,
+                        category,
+                        isDuplicate: isFileDuplicate(file.path)
+                    };
+                    
+                    // Determine recommendation type
+                    if (file.recommendation.toLowerCase().includes('delete')) {
+                        fileObj.recommendationType = 'delete';
+                    } else if (file.recommendation.toLowerCase().includes('move')) {
+                        fileObj.recommendationType = 'move';
+                    } else {
+                        fileObj.recommendationType = 'keep';
+                    }
+                    
+                    filteredFiles.push(fileObj);
+                });
+            }
+        }
+        
+        // Determine if a file is marked as a duplicate
+        function isFileDuplicate(path) {
+            if (!downloadsData.summary || !downloadsData.summary.duplicates) return false;
+            
+            return downloadsData.summary.duplicates.some(dupGroup => {
+                if (dupGroup.duplicate && dupGroup.duplicate === path) return true;
+                if (dupGroup.duplicates && dupGroup.duplicates.includes(path)) return true;
+                return false;
+            });
+        }
+        
+        // Render the main UI components
+        function renderUI() {
+            renderCategories();
+            updateActionButtons();
+            
+            // Set up event listeners
+            searchInputEl.addEventListener('input', filterFiles);
+            categoryFilterEl.addEventListener('change', filterFiles);
+            recommendationFilterEl.addEventListener('change', filterFiles);
+            selectAllBtn.addEventListener('click', selectAllVisible);
+            deselectAllBtn.addEventListener('click', deselectAll);
+            moveSelectedBtn.addEventListener('click', showMoveModal);
+            deleteSelectedBtn.addEventListener('click', showDeleteConfirmation);
+            cancelDeleteBtn.addEventListener('click', hideDeleteConfirmation);
+            closeModalBtn.addEventListener('click', hideDeleteConfirmation);
+            confirmDeleteBtn.addEventListener('click', deleteSelectedFiles);
+            
+            // Move modal buttons
+            document.getElementById('cancel-move-btn').addEventListener('click', hideMoveModal);
+            document.getElementById('confirm-move-btn').addEventListener('click', moveSelectedFiles);
+            document.getElementById('add-destination-btn').addEventListener('click', showFolderSelectModal);
+            document.querySelector('#move-modal .close-modal').addEventListener('click', hideMoveModal);
+            
+            // Folder select modal
+            document.getElementById('cancel-folder-btn').addEventListener('click', hideFolderSelectModal);
+            document.getElementById('confirm-folder-btn').addEventListener('click', confirmFolderSelection);
+            document.querySelector('#folder-select-modal .close-modal').addEventListener('click', hideFolderSelectModal);
+            
+            // Common folder buttons
+            document.querySelectorAll('.folder-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.getElementById('folder-path').value = e.target.dataset.path;
+                });
+            });
+            
+            // Close the modal when clicking outside of it
+            window.addEventListener('click', (e) => {
+                if (e.target === confirmationModal) {
+                    hideDeleteConfirmation();
+                }
+            });
+        }
+        
+        // Render all categories and their files
+        function renderCategories() {
+            // Clear selected files to prevent stale references
+            selectedFiles.clear();
+            
+            // Reset the UI
+            fileCategoriesEl.innerHTML = '';
+            
+            // Count categories with files
+            let nonEmptyCategories = 0;
+            
+            for (const category in downloadsData.categories) {
+                // Skip categories with no files
+                if (!downloadsData.categories[category].files || 
+                    downloadsData.categories[category].files.length === 0) {
+                    continue;
+                }
+                
+                nonEmptyCategories++;
+                
+                const categoryContainer = document.createElement('div');
+                categoryContainer.className = 'category-container';
+                categoryContainer.dataset.category = category;
+                
+                const categoryHeader = document.createElement('div');
+                categoryHeader.className = 'category-header';
+                categoryHeader.innerHTML = `
+                    <h2>${formatCategoryName(category)} <span class="badge">${downloadsData.categories[category].files.length}</span></h2>
+                    <div class="category-actions">
+                        <button class="category-toggle">▼</button>
+                    </div>
+                `;
+                
+                const categoryContent = document.createElement('div');
+                categoryContent.className = 'category-content';
+                
+                categoryHeader.addEventListener('click', () => {
+                    categoryContent.classList.toggle('expanded');
+                    const toggleBtn = categoryHeader.querySelector('.category-toggle');
+                    toggleBtn.textContent = categoryContent.classList.contains('expanded') ? '▲' : '▼';
+                });
+                
+                // Create table of files
+                const table = document.createElement('table');
+                table.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th width="30px"><input type="checkbox" class="category-checkbox" data-category="${category}"></th>
+                            <th>File</th>
+                            <th>Recommendation</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                `;
+                
+                const tbody = table.querySelector('tbody');
+                
+                // Add files to the table
+                downloadsData.categories[category].files.forEach(file => {
+                    const tr = document.createElement('tr');
+                    tr.dataset.path = file.path;
+                    
+                    // Determine if this is a duplicate file
+                    const isDuplicate = isFileDuplicate(file.path);
+                    if (isDuplicate) {
+                        tr.classList.add('duplicate-file');
+                    }
+                    
+                    // Extract file name from path
+                    const fileName = file.path.split('/').pop();
+                    
+                    // Determine recommendation class
+                    let recommendationClass = '';
+                    if (file.recommendation.toLowerCase().includes('delete')) {
+                        recommendationClass = 'delete';
+                    } else if (file.recommendation.toLowerCase().includes('move')) {
+                        recommendationClass = 'move';
+                    } else if (file.recommendation.toLowerCase().includes('keep')) {
+                        recommendationClass = 'keep';
+                    }
+                    
+                    tr.innerHTML = `
+                        <td><input type="checkbox" class="file-checkbox" data-path="${file.path}"></td>
+                        <td>
+                            <div class="file-path">${fileName}</div>
+                            <small class="file-path" style="color: #7f8c8d;">${file.path}</small>
+                            ${isDuplicate ? '<span class="badge warning">Duplicate</span>' : ''}
+                            ${file.size ? `<span class="badge">${file.size}</span>` : ''}
+                        </td>
+                        <td><span class="recommendation ${recommendationClass}">${file.recommendation}</span></td>
+                    `;
+                    
+                    tbody.appendChild(tr);
+                });
+                
+                // Add checkbox event listener for category
+                const categoryCheckbox = table.querySelector('.category-checkbox');
+                categoryCheckbox.addEventListener('change', (e) => {
+                    const checkboxes = table.querySelectorAll('.file-checkbox');
+                    checkboxes.forEach(cb => {
+                        cb.checked = e.target.checked;
+                        const path = cb.dataset.path;
+                        if (e.target.checked) {
+                            selectedFiles.add(path);
+                        } else {
+                            selectedFiles.delete(path);
+                        }
+                    });
+                    updateDeleteButton();
+                });
+                
+                // Add event listeners for individual file checkboxes
+                table.querySelectorAll('.file-checkbox').forEach(checkbox => {
+                    checkbox.addEventListener('change', (e) => {
+                        const path = e.target.dataset.path;
+                        if (e.target.checked) {
+                            selectedFiles.add(path);
+                        } else {
+                            selectedFiles.delete(path);
+                            
+                            // Uncheck the category checkbox if any file is unchecked
+                            const categoryCheckbox = table.querySelector('.category-checkbox');
+                            categoryCheckbox.checked = false;
+                        }
+                        updateActionButtons();
+                    });
+                });
+                
+                categoryContent.appendChild(table);
+                categoryContainer.appendChild(categoryHeader);
+                categoryContainer.appendChild(categoryContent);
+                fileCategoriesEl.appendChild(categoryContainer);
+            }
+        }
+        
+        // Format category name from snake_case to Title Case
+        function formatCategoryName(name) {
+            return name.split('_')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ');
+        }
+        
+        // Filter files based on search input and dropdowns
+        function filterFiles() {
+            const searchTerm = searchInputEl.value.toLowerCase();
+            const categoryFilter = categoryFilterEl.value;
+            const recommendationFilter = recommendationFilterEl.value;
+            
+            // Reset selection when filter changes
+            selectedFiles.clear();
+            updateActionButtons();
+            
+            document.querySelectorAll('.category-container').forEach(category => {
+                const categoryName = category.dataset.category;
+                
+                // Hide/show the category based on the category filter
+                if (categoryFilter !== 'all' && categoryFilter !== categoryName) {
+                    category.style.display = 'none';
+                    return;
+                } else {
+                    category.style.display = 'block';
+                }
+                
+                // Filter rows within the visible categories
+                let visibleRowCount = 0;
+                category.querySelectorAll('tbody tr').forEach(row => {
+                    const filePath = row.dataset.path;
+                    const fileObj = filteredFiles.find(f => f.path === filePath);
+                    
+                    if (!fileObj) return;
+                    
+                    const matchesSearch = filePath.toLowerCase().includes(searchTerm);
+                    const matchesRecommendation = recommendationFilter === 'all' || 
+                                               fileObj.recommendationType === recommendationFilter;
+                    
+                    if (matchesSearch && matchesRecommendation) {
+                        row.style.display = 'table-row';
+                        visibleRowCount++;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+                
+                // Update category checkbox state
+                const categoryCheckbox = category.querySelector('.category-checkbox');
+                if (categoryCheckbox) {
+                    categoryCheckbox.checked = false;
+                }
+                
+                // Hide empty categories
+                if (visibleRowCount === 0 && categoryFilter === 'all') {
+                    category.style.display = 'none';
+                }
+            });
+        }
+        
+        // Select all visible files
+        function selectAllVisible() {
+            document.querySelectorAll('tr[style="display: table-row"] .file-checkbox, tr:not([style]) .file-checkbox').forEach(checkbox => {
+                checkbox.checked = true;
+                selectedFiles.add(checkbox.dataset.path);
+            });
+            
+            // Update category checkboxes
+            document.querySelectorAll('.category-container').forEach(category => {
+                if (category.style.display !== 'none') {
+                    const visibleFileCheckboxes = Array.from(
+                        category.querySelectorAll('tr[style="display: table-row"] .file-checkbox, tr:not([style]) .file-checkbox')
+                    );
+                    const allChecked = visibleFileCheckboxes.length > 0 && 
+                                      visibleFileCheckboxes.every(cb => cb.checked);
+                    const categoryCheckbox = category.querySelector('.category-checkbox');
+                    if (categoryCheckbox) {
+                        categoryCheckbox.checked = allChecked;
+                    }
+                }
+            });
+            
+            updateActionButtons();
+        }
+        
+        // Deselect all files
+        function deselectAll() {
+            document.querySelectorAll('.file-checkbox, .category-checkbox').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            selectedFiles.clear();
+            updateActionButtons();
+        }
+        
+        // Update the action buttons state
+        function updateActionButtons() {
+            const count = selectedFiles.size;
+            deleteSelectedBtn.disabled = count === 0;
+            deleteSelectedBtn.textContent = `Delete Selected (${count})`;
+            moveSelectedBtn.disabled = count === 0;
+            moveSelectedBtn.textContent = `Move Selected (${count})`;
+        }
+        
+        // Show the delete confirmation modal
+        function showDeleteConfirmation() {
+            if (selectedFiles.size === 0) return;
+            
+            filesToDeleteEl.innerHTML = '';
+            
+            // Limit the list to 10 files for readability
+            const selectedFilesArray = Array.from(selectedFiles);
+            const displayCount = Math.min(selectedFilesArray.length, 10);
+            
+            for (let i = 0; i < displayCount; i++) {
+                const path = selectedFilesArray[i];
+                const li = document.createElement('li');
+                li.textContent = path.split('/').pop();
+                filesToDeleteEl.appendChild(li);
+            }
+            
+            if (selectedFilesArray.length > 10) {
+                const li = document.createElement('li');
+                li.textContent = `...and ${selectedFilesArray.length - 10} more files`;
+                filesToDeleteEl.appendChild(li);
+            }
+            
+            confirmationModal.style.display = 'flex';
+        }
+        
+        // Hide the delete confirmation modal
+        function hideDeleteConfirmation() {
+            confirmationModal.style.display = 'none';
+        }
+        
+        // Delete the selected files - optimistic UI approach
+        function deleteSelectedFiles() {
+            if (selectedFiles.size === 0) {
+                hideDeleteConfirmation();
+                return;
+            }
+            
+            // Get delete preference
+            const useRecycleBin = document.getElementById('use-recycle-bin').checked;
+            
+            // Make a copy of the selected files before clearing
+            const filesToDelete = Array.from(selectedFiles);
+            const deletedCount = filesToDelete.length;
+            
+            // Hide the delete confirmation immediately
+            hideDeleteConfirmation();
+            
+            // OPTIMISTIC UI UPDATE - Update our local data model now, assuming success
+            showToast(`Deleting ${deletedCount} files...`, 'info');
+            
+            // Remove the files from our data model
+            for (const category in downloadsData.categories) {
+                downloadsData.categories[category].files = downloadsData.categories[category].files.filter(
+                    file => !filesToDelete.includes(file.path)
+                );
+            }
+            
+            // Remove from filtered files
+            filteredFiles = filteredFiles.filter(file => !filesToDelete.includes(file.path));
+            
+            // Update UI BEFORE server response
+            renderCategories();
+            filterFiles();
+            initializeChart();
+            updateStats();
+            
+            // Clear selection
+            selectedFiles.clear();
+            updateActionButtons();
+            
+            // Now actually send the delete request
+            const queryParams = new URLSearchParams();
+            
+            // Add each file path
+            filesToDelete.forEach(path => {
+                queryParams.append('path', path);
+            });
+            
+            // Add recycle bin preference
+            queryParams.append('useRecycleBin', useRecycleBin);
+            
+            // Send the delete request in a non-blocking way
+            fetch(`/api/delete?${queryParams.toString()}`, { method: 'DELETE' })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Server returned ${response.status}: ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(result => {
+                    // Count successes and failures
+                    const successCount = result.results.filter(r => r.success).length;
+                    const failureCount = result.results.filter(r => !r.success).length;
+                    
+                    // Show appropriate toast
+                    if (failureCount > 0) {
+                        showToast(`Deleted ${successCount} files, ${failureCount} files could not be deleted`, 'warning');
+                        console.warn('Failed to delete some files:', 
+                            result.results.filter(r => !r.success).map(r => `${r.path}: ${r.error}`));
+                    } else {
+                        showToast(`Successfully deleted ${successCount} files`, 'success');
+                    }
+                    
+                    // Optionally refresh data in the background without blocking the UI
+                    setTimeout(() => {
+                        fetch('claudeDownloadIndex.json')
+                            .then(response => response.json())
+                            .then(data => {
+                                // Silently update data model
+                                downloadsData = data;
+                                processData();
+                                console.log('Data refreshed in background');
+                            })
+                            .catch(e => console.log('Background refresh failed, will update on next action'));
+                    }, 500);
+                })
+                .catch(error => {
+                    console.error('Error deleting files:', error);
+                    showToast(`Error: ${error.message}. Refresh page for accurate listing.`, 'error');
+                });
+        }
+        
+        // Show toast message
+        function showToast(message, type = '') {
+            toastEl.textContent = message;
+            toastEl.className = 'toast';
+            if (type) {
+                toastEl.classList.add(type);
+            }
+            toastEl.classList.add('show');
+            
+            setTimeout(() => {
+                toastEl.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Initialize the chart
+        function initializeChart() {
+            const ctx = document.getElementById('file-chart').getContext('2d');
+            
+            // Count files by category
+            const categories = {};
+            for (const category in downloadsData.categories) {
+                categories[formatCategoryName(category)] = downloadsData.categories[category].files.length;
+            }
+            
+            // Prepare data for the chart
+            const labels = Object.keys(categories);
+            const data = Object.values(categories);
+            
+            // Define colors
+            const colors = [
+                '#3498db', '#2ecc71', '#e74c3c', '#f39c12', '#9b59b6',
+                '#1abc9c', '#34495e', '#e67e22', '#27ae60', '#c0392b',
+                '#2980b9', '#8e44ad', '#16a085', '#d35400', '#7f8c8d'
+            ];
+            
+            // Destroy previous chart if it exists
+            if (fileChart) {
+                fileChart.destroy();
+            }
+            
+            // Create new chart
+            fileChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: colors.slice(0, labels.length),
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                boxWidth: 15,
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: (context) => {
+                                    const label = context.label || '';
+                                    const value = context.parsed || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = Math.round((value / total) * 100);
+                                    return `${label}: ${value} files (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Update statistics display
+        function updateStats() {
+            let totalFiles = 0;
+            let duplicateCount = 0;
+            
+            for (const category in downloadsData.categories) {
+                totalFiles += downloadsData.categories[category].files.length;
+            }
+            
+            if (downloadsData.summary && downloadsData.summary.duplicates) {
+                downloadsData.summary.duplicates.forEach(dupGroup => {
+                    if (dupGroup.duplicates) {
+                        duplicateCount += dupGroup.duplicates.length;
+                    } else if (dupGroup.duplicate) {
+                        duplicateCount += 1;
+                    }
+                });
+            }
+            
+            totalCountEl.textContent = `${totalFiles} Files`;
+            duplicateCountEl.textContent = `${duplicateCount} Duplicates`;
+        }
+        
+        // Render the summary section
+        function renderSummary() {
+            if (!downloadsData.summary) {
+                summaryContentEl.innerHTML = '<p>No summary data available</p>';
+                return;
+            }
+            
+            let html = '<h3>Cleanup Recommendations</h3>';
+            
+            // Delete first recommendations
+            if (downloadsData.summary.cleanup_priority && downloadsData.summary.cleanup_priority.delete_first) {
+                html += '<h4>Delete First:</h4><ul class="recommendation-list">';
+                downloadsData.summary.cleanup_priority.delete_first.forEach(item => {
+                    html += `<li>${item}</li>`;
+                });
+                html += '</ul>';
+            }
+            
+            // Organization recommendations
+            if (downloadsData.summary.cleanup_priority && downloadsData.summary.cleanup_priority.organize_by_type) {
+                html += '<h4>Organization Strategy:</h4><ul class="recommendation-list">';
+                downloadsData.summary.cleanup_priority.organize_by_type.forEach(item => {
+                    html += `<li>${item}</li>`;
+                });
+                html += '</ul>';
+            }
+            
+            summaryContentEl.innerHTML = html;
+        }
+        
+        // Start the application
+        document.addEventListener('DOMContentLoaded', loadData);
+    </script>
+</body>
+</html>

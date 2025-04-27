@@ -1,0 +1,796 @@
+{
+  "categories": {
+    "installers": {
+      "files": [
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\OllamaSetup.exe",
+          "size": "1004M",
+          "recommendation": "Keep if still needed, large file"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Docker Desktop Installer.exe",
+          "size": "533M",
+          "recommendation": "Delete, duplicate of Docker Desktop Installer (1).exe"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Docker Desktop Installer (1).exe",
+          "size": "533M",
+          "recommendation": "Keep if Docker is still needed, delete older version"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\VMware-workstation-full-17.6.2-24409262.exe",
+          "size": "448M",
+          "recommendation": "Keep if VMware is still needed, large file"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\iconik Agent-25.2.2 Setup.exe",
+          "size": "111M",
+          "recommendation": "Move to software archive folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\VSCodeUserSetup-x64-1.99.2.exe",
+          "size": "103M",
+          "recommendation": "Keep if VS Code is still needed, recent download"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\openvpn-connect-3.6.0.4074_signed.msi",
+          "size": "99M",
+          "recommendation": "Move to software archive folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\IconikStorageGateway-latest.msi",
+          "size": "49M",
+          "recommendation": "Move to software archive folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\VisualStudioSetup.exe",
+          "size": "4.5M",
+          "recommendation": "Keep if still needed for Visual Studio"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\FortiClientVPNOnlineInstaller.exe",
+          "size": "2.8M",
+          "recommendation": "Move to software archive folder if VPN is still needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Muse_Hub.exe",
+          "size": "44M",
+          "recommendation": "Move to software archive folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Seelen.UI_2.1.9_x64-setup.exe",
+          "size": "35M",
+          "recommendation": "Move to software archive folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\InputLeap_3.0.2_windows_qt6.exe",
+          "size": "17.5M",
+          "recommendation": "Move to software archive folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\bonjoursdksetup.exe",
+          "size": "8.3M",
+          "recommendation": "Move to software archive folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\OfficeSetup.exe",
+          "size": "7.3M",
+          "recommendation": "Keep if Office is still needed, recent download"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Day One Installer.exe",
+          "recommendation": "Move to software archive folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle",
+          "recommendation": "Move to software archive folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\WIN Tools\\wdksetup.exe",
+          "recommendation": "Move to dedicated Windows development folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\WIN Tools\\winsdksetup.exe",
+          "recommendation": "Move to dedicated Windows development folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\bluescreenview\\BlueScreenView.exe",
+          "recommendation": "Keep with its parent folder if Windows debugging is needed"
+        }
+      ]
+    },
+    "archives": {
+      "files": [
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\ubuntu-22.04-minimal-cloudimg-amd64-root.tar.xz",
+          "recommendation": "Move to OS images folder if needed for development"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\alpine-minirootfs-3.19.1-x86_64.tar.gz",
+          "recommendation": "Move to OS images folder if needed for development"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\R WinDrv Installer V6.2.0.18 WHQL.zip",
+          "recommendation": "Move to drivers folder if still needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\aiplusadmin-standalone.zip",
+          "recommendation": "Move to AI+ project folder, related to other AI+ files"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\bluescreenview.zip",
+          "recommendation": "Delete, already extracted to bluescreenview folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\create_a_set_of_3D_cl_0330023844_texture_fbx.zip",
+          "recommendation": "Move to 3D assets folder with other GLB files"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\endlessFlyer_fixed_sprite.zip",
+          "recommendation": "Delete, already extracted"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\endlessFlyer_updated.zip",
+          "recommendation": "Move to game development project folder, more recent version than fixed_sprite"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\import_3dm-v0.0.15-py3_10-windows.zip",
+          "recommendation": "Move to 3D modeling tool folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\lowpoly_buildings.zip",
+          "recommendation": "Delete, already extracted to lowpoly_buildings folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\nyc_3dmodel_mn01.zip",
+          "recommendation": "Delete, already extracted to nyc_3dmodel_mn01 folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\pictory-profile.zip",
+          "recommendation": "Delete, already extracted to pictory-profile folder"
+        }
+      ]
+    },
+    "documents": {
+      "files": [
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\AI+ Face Recognition Training Documentation.pdf",
+          "recommendation": "Move to AI+ project folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Perifery AI+ Training Documentation.pdf",
+          "recommendation": "Move to AI+ project folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\MCS-VisiononSwarmInstallGuide-190225-1200-108.pdf",
+          "recommendation": "Move to documentation folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\docs_arcapix_com_ngeneahub_v2_5_3_admin_guide_index_html.pdf",
+          "recommendation": "Move to documentation folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\nVidia_metropoliswebinarfeb2025final1740527267242.pdf",
+          "recommendation": "Move to documentation folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\ASG_SOW_MediaMoveronAsana_04022024.docx",
+          "recommendation": "Move to business documents folder, recent SOW"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Option A PocketWatch_SOW_Agile_03122024.docx",
+          "recommendation": "Delete, duplicate of PocketWatch_SOW_Agile_03122024.docx"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\PocketWatch_SOW_Agile_03122024.docx",
+          "recommendation": "Move to business documents folder, recent SOW"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Riot Games - WIN SOW_MSA 4.0_SendtoAirtable_03312023.docx",
+          "recommendation": "Move to business documents folder if still relevant"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\RomeroInstitute_SOW_Agile_05052023.docx",
+          "recommendation": "Move to business documents folder if still relevant"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\SOW6-GoldPkgSupport-11302023.docx",
+          "recommendation": "Move to business documents folder if still relevant"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\v2 AXON SOW_012122.docx - 07-29-2023 10_55_55 PM.docx",
+          "recommendation": "Move to business documents folder if still relevant"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\EA-AI-ProjectExploration-082923.docx",
+          "recommendation": "Move to EA project folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\EarthStream Media Project Overview and Budget.docx",
+          "recommendation": "Move to EarthStream project folder, related to earthstream-*.md files"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Pixit Price Book - DELL OEM - FEB 25.xlsx",
+          "recommendation": "Move to business documents folder if still relevant"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Portfolio_Tracker_With_Alerts.xlsx",
+          "recommendation": "Move to personal finance folder if still in use"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Q12069_SwayBox_JB&A_ASG_costsheet_V1 (3).xlsx",
+          "recommendation": "Move to business documents folder if still relevant"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\DRAFT AI slides 1.pptx",
+          "recommendation": "Move to AI presentations folder if still needed"
+        }
+      ]
+    },
+    "forms_and_personal": {
+      "files": [
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\AC_immunization-form.pdf",
+          "recommendation": "Move to personal documents folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\AllRequiredForms_Pending.pdf",
+          "recommendation": "Move to personal documents folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\AstroCamp_Code_of_Conduct.pdf",
+          "recommendation": "Move to personal documents folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\HPA2025-HPA1.pdf",
+          "recommendation": "Move to personal documents folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\OFY-DUA-wioabt-unique-Handbook-24-25.pdf",
+          "recommendation": "Move to personal documents folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Physician's_Examination.pdf",
+          "recommendation": "Move to personal medical folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\W9-signed.pdf",
+          "recommendation": "Move to financial documents folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\bloodTest_03202025.pdf",
+          "recommendation": "Move to personal medical folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\bloodTest_03202025.jpg",
+          "recommendation": "Delete, duplicate of PDF version"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\2025_Two_Week_Activity_Guide_(1).pdf",
+          "recommendation": "Move to personal documents folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\parentAuthorizationFormOnePage.pdf",
+          "recommendation": "Move to personal documents folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\parentAuthorizationFormOnePage (1).pdf",
+          "recommendation": "Delete, duplicate of parentAuthorizationFormOnePage.pdf"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\invoice_Demetrius Scott (Startup Agile LLC)_66e5dc24fa2247ce_422025.pdf",
+          "recommendation": "Move to financial documents folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\runpod-invoice-2024-09-29.pdf",
+          "recommendation": "Move to financial documents folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\labreport.pdf",
+          "recommendation": "Move to personal medical folder"
+        }
+      ]
+    },
+    "3D_models_and_game_assets": {
+      "files": [
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\3Dclouds.glb",
+          "recommendation": "Move to 3D assets folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Air_Superiority_Model_0329183209_texture.glb",
+          "recommendation": "Move to 3D assets folder for game project"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Bullet_Concept_Art_0329205155_texture.glb",
+          "recommendation": "Move to 3D assets folder for game project"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Yellow_Tip_Rocket.glb",
+          "recommendation": "Move to 3D assets folder for game project"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Yellow_Tip_Rocket (1).glb",
+          "recommendation": "Delete, duplicate of Yellow_Tip_Rocket.glb"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Yellow_Tip_Rocket_0329204255_texture.glb",
+          "recommendation": "Move to 3D assets folder for game project"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\badGuy1.glb",
+          "recommendation": "Move to 3D assets folder for game project"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\buildingSet1.glb",
+          "recommendation": "Move to 3D assets folder for game project"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\new_york_city._manhattan.glb",
+          "recommendation": "Move to 3D assets folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\lowpoly_buildings\\",
+          "recommendation": "Move entire folder to 3D assets folder for game project"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\nyc_3dmodel_mn01\\",
+          "recommendation": "Move entire folder to 3D assets folder"
+        }
+      ]
+    },
+    "game_development": {
+      "files": [
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\enemy1.png",
+          "recommendation": "Move to game assets folder, duplicate in endlessFlyer folders"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\enemy2.png",
+          "recommendation": "Move to game assets folder, duplicate in endlessFlyer folders"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\enemy3.png",
+          "recommendation": "Move to game assets folder, duplicate in endlessFlyer folders"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\enemy4.png",
+          "recommendation": "Move to game assets folder, duplicate in endlessFlyer folders"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\enemy5.png",
+          "recommendation": "Move to game assets folder, duplicate in endlessFlyer folders"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\f16.png",
+          "recommendation": "Move to game assets folder, related to game project"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\f16_clean.png",
+          "recommendation": "Move to game assets folder, duplicate in endlessFlyer folders"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\badGuyPlane1.png",
+          "recommendation": "Move to game assets folder, related to game project"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\bullet1.png",
+          "recommendation": "Move to game assets folder, related to game project"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\missle1.png",
+          "recommendation": "Move to game assets folder, related to game project"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\trezero_pixelart_2d_enemy_russian_fighter_jet*.png",
+          "recommendation": "Move all to game assets folder, related to game project"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\endlessFlyer_updated\\",
+          "recommendation": "Move entire folder to game development project folder, keep this version"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\endlessFlyer_fixed_sprite\\",
+          "recommendation": "Delete folder, older version than endlessFlyer_updated"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\code.html",
+          "recommendation": "Move to web development folder with code.js and code.css"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\code.js",
+          "recommendation": "Move to web development folder with code.html and code.css"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\code.css",
+          "recommendation": "Move to web development folder with code.html and code.js"
+        }
+      ]
+    },
+    "configuration_files": {
+      "files": [
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\bumblebee-UDP4-1194-perifery-config.ovpn",
+          "recommendation": "Move to VPN configuration folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\bumblebee-UDP4-1194-perifery-config (1).ovpn",
+          "recommendation": "Delete, duplicate of .ovpn file"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\MCP_Server.json",
+          "recommendation": "Move to appropriate project configuration folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\periphery-metadata-demo-key",
+          "recommendation": "Move to secure credentials folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\periferyAWSp3Test.pem",
+          "recommendation": "Move to secure credentials folder"
+        }
+      ]
+    },
+    "project_documentation": {
+      "files": [
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\developmentPlanPhase1.md",
+          "recommendation": "Move to project documentation folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\developmentPlanPhase2.md",
+          "recommendation": "Move to project documentation folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\developmentPlanPhase3.md",
+          "recommendation": "Move to project documentation folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\developmentPlanPhase4.md",
+          "recommendation": "Move to project documentation folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\developmentPlanPhase5.md",
+          "recommendation": "Move to project documentation folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\developmentPlanPhase6.md",
+          "recommendation": "Move to project documentation folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\developmentPlanPhase7.md",
+          "recommendation": "Move to project documentation folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\earthstream-project-summary.md",
+          "recommendation": "Move to EarthStream project folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\earthstream-project-support.md",
+          "recommendation": "Move to EarthStream project folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\iconikInstallerPlan.md",
+          "recommendation": "Move to iconik project folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\aiNoteTaker_PRD.md",
+          "recommendation": "Move to AI projects folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\plan.md",
+          "recommendation": "Move to appropriate project folder after review"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\pricing-and-products.md",
+          "recommendation": "Move to business documentation folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\prompts.md",
+          "recommendation": "Move to AI projects folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\sow-template-guide.md",
+          "recommendation": "Move to business documentation folder"
+        }
+      ]
+    },
+    "media_files": {
+      "files": [
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\AI+ Pixit Ngenea Swarm Vision Integration.wav",
+          "recommendation": "Move to AI+ project folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Research Data Storage and Management Platforms Clarifications.wav",
+          "recommendation": "Move to project audio folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\aiplus_installer_and_admin_demo.mp4",
+          "recommendation": "Move to AI+ project folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\siracha.mp4",
+          "recommendation": "Review and decide if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\videoplayback.mp4",
+          "recommendation": "Review and decide if needed"
+        }
+      ]
+    },
+    "temporary_files": {
+      "files": [
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Microsoft.RemoteDesktop_8wekyb3d8bbwe!App\\TemporaryRDStorageFiles-*",
+          "recommendation": "Delete all temporary Remote Desktop storage files"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\REMOVE\\",
+          "recommendation": "Delete entire REMOVE folder as it appears to be marked for deletion"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\This PC.lnk",
+          "recommendation": "Delete shortcut file"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\log-2025.03.28.log",
+          "recommendation": "Delete if not needed for debugging"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Steam\\",
+          "recommendation": "Review contents and move to appropriate folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\desktop.ini",
+          "recommendation": "Can be safely deleted"
+        }
+      ]
+    },
+    "email_files": {
+      "files": [
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Recent changes to your Steam account.eml",
+          "recommendation": "Move to email archive folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Thank you for your Steam purchase!.eml",
+          "recommendation": "Move to email archive folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Your Steam account Access from new computer.eml",
+          "recommendation": "Delete, duplicate of similar email"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Your Steam account_ Access from new computer.eml",
+          "recommendation": "Move to email archive folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\email1.pdf",
+          "recommendation": "Move to email archive folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\email2.pdf",
+          "recommendation": "Move to email archive folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\email3.pdf",
+          "recommendation": "Move to email archive folder if needed"
+        }
+      ]
+    },
+    "AI_project_files": {
+      "files": [
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\pictory-profile\\",
+          "recommendation": "Move entire folder to AI projects folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\aiplus-installer",
+          "recommendation": "Move to AI+ project folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\aiplus-installer (1)",
+          "recommendation": "Delete, duplicate of aiplus-installer"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\yolov8n.pt",
+          "recommendation": "Move to AI models folder"
+        }
+      ]
+    },
+    "photos": {
+      "files": [
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\20250211_115617.jpg",
+          "recommendation": "Review and move to photos folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\20250211_115853.jpg",
+          "recommendation": "Review and move to photos folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\20250303_114140.jpg",
+          "recommendation": "Review and move to photos folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\20250303_114147.jpg",
+          "recommendation": "Review and move to photos folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\ChatGPT Image Mar 29, 2025, 10_30_49 AM.png",
+          "recommendation": "Review and move to AI-generated images folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\ChatGPT Image Mar 29, 2025, 11_18_42 AM.png",
+          "recommendation": "Review and move to AI-generated images folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\Google MediaMover Debug - Frame 1.jpg",
+          "recommendation": "Move to debug screenshots folder if still needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\JasonHeadshotNew.png",
+          "recommendation": "Move to profile photos folder"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\My ChatGPT image.png",
+          "recommendation": "Move to AI-generated images folder if needed"
+        },
+        {
+          "path": "C:\\Users\\winadmin\\Downloads\\SolacePSAT_1stTest_2024.jpg",
+          "recommendation": "Move to test results folder if needed"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "duplicates": [
+      {
+        "original": "C:\\Users\\winadmin\\Downloads\\Docker Desktop Installer.exe",
+        "duplicate": "C:\\Users\\winadmin\\Downloads\\Docker Desktop Installer (1).exe"
+      },
+      {
+        "original": "C:\\Users\\winadmin\\Downloads\\PocketWatch_SOW_Agile_03122024.docx",
+        "duplicate": "C:\\Users\\winadmin\\Downloads\\Option A PocketWatch_SOW_Agile_03122024.docx"
+      },
+      {
+        "original": "C:\\Users\\winadmin\\Downloads\\JamieSabino_devOpsManager.pdf",
+        "duplicates": [
+          "C:\\Users\\winadmin\\Downloads\\JamieSabino_devOpsManager (1).pdf",
+          "C:\\Users\\winadmin\\Downloads\\JamieSabino_devOpsManager (2).pdf"
+        ]
+      },
+      {
+        "original": "C:\\Users\\winadmin\\Downloads\\Yellow_Tip_Rocket.glb",
+        "duplicate": "C:\\Users\\winadmin\\Downloads\\Yellow_Tip_Rocket (1).glb"
+      },
+      {
+        "original": "C:\\Users\\winadmin\\Downloads\\bumblebee-UDP4-1194-perifery-config.ovpn",
+        "duplicate": "C:\\Users\\winadmin\\Downloads\\bumblebee-UDP4-1194-perifery-config (1).ovpn"
+      },
+      {
+        "original": "C:\\Users\\winadmin\\Downloads\\parentAuthorizationFormOnePage.pdf",
+        "duplicate": "C:\\Users\\winadmin\\Downloads\\parentAuthorizationFormOnePage (1).pdf"
+      },
+      {
+        "original": "C:\\Users\\winadmin\\Downloads\\bloodTest_03202025.pdf",
+        "duplicate": "C:\\Users\\winadmin\\Downloads\\bloodTest_03202025.jpg"
+      },
+      {
+        "original": "C:\\Users\\winadmin\\Downloads\\endlessFlyer_updated\\",
+        "duplicate": "C:\\Users\\winadmin\\Downloads\\endlessFlyer_fixed_sprite\\"
+      },
+      {
+        "original": "C:\\Users\\winadmin\\Downloads\\aiplus-installer",
+        "duplicate": "C:\\Users\\winadmin\\Downloads\\aiplus-installer (1)"
+      }
+    ],
+    "related_groups": [
+      {
+        "name": "AI+ Project Files",
+        "files": [
+          "AI+ Face Recognition Training Documentation.pdf",
+          "Perifery AI+ Training Documentation.pdf",
+          "AI+ Pixit Ngenea Swarm Vision Integration.wav",
+          "aiplus_installer_and_admin_demo.mp4",
+          "aiplus-installer",
+          "aiplus-installer (1)",
+          "aiplusadmin-standalone.zip"
+        ]
+      },
+      {
+        "name": "Game Development",
+        "files": [
+          "endlessFlyer_updated/",
+          "endlessFlyer_fixed_sprite/",
+          "enemy1.png through enemy5.png",
+          "f16.png",
+          "f16_clean.png",
+          "badGuyPlane1.png",
+          "bullet1.png",
+          "missle1.png",
+          "trezero_pixelart_2d*.png"
+        ]
+      },
+      {
+        "name": "3D Models",
+        "files": [
+          "3Dclouds.glb",
+          "Air_Superiority_Model_0329183209_texture.glb",
+          "Bullet_Concept_Art_0329205155_texture.glb",
+          "Yellow_Tip_Rocket*.glb",
+          "badGuy1.glb",
+          "buildingSet1.glb",
+          "new_york_city._manhattan.glb",
+          "lowpoly_buildings/",
+          "nyc_3dmodel_mn01/"
+        ]
+      },
+      {
+        "name": "EarthStream Project",
+        "files": [
+          "EarthStream Media Project Overview and Budget.docx",
+          "earthstream-project-summary.md",
+          "earthstream-project-support.md"
+        ]
+      },
+      {
+        "name": "SOW Documents",
+        "files": [
+          "ASG_SOW_MediaMoveronAsana_04022024.docx",
+          "PocketWatch_SOW_Agile_03122024.docx",
+          "Option A PocketWatch_SOW_Agile_03122024.docx",
+          "Riot Games - WIN SOW_MSA 4.0_SendtoAirtable_03312023.docx",
+          "RomeroInstitute_SOW_Agile_05052023.docx",
+          "SOW6-GoldPkgSupport-11302023.docx"
+        ]
+      },
+      {
+        "name": "Medical Files",
+        "files": [
+          "Physician's_Examination.pdf",
+          "bloodTest_03202025.pdf",
+          "bloodTest_03202025.jpg",
+          "labreport.pdf"
+        ]
+      },
+      {
+        "name": "Development Plans",
+        "files": [
+          "developmentPlanPhase1.md",
+          "developmentPlanPhase2.md",
+          "developmentPlanPhase3.md",
+          "developmentPlanPhase4.md",
+          "developmentPlanPhase5.md",
+          "developmentPlanPhase6.md",
+          "developmentPlanPhase7.md"
+        ]
+      }
+    ],
+    "cleanup_priority": {
+      "delete_first": [
+        "Microsoft.RemoteDesktop_8wekyb3d8bbwe!App/TemporaryRDStorageFiles-*",
+        "REMOVE/",
+        "Docker Desktop Installer.exe (older duplicate)",
+        "Option A PocketWatch_SOW_Agile_03122024.docx (duplicate)",
+        "JamieSabino_devOpsManager (1).pdf and (2).pdf (duplicates)",
+        "Yellow_Tip_Rocket (1).glb (duplicate)",
+        "bumblebee-UDP4-1194-perifery-config (1).ovpn (duplicate)",
+        "parentAuthorizationFormOnePage (1).pdf (duplicate)",
+        "bloodTest_03202025.jpg (PDF version exists)",
+        "endlessFlyer_fixed_sprite/ (older version)",
+        "aiplus-installer (1) (duplicate)",
+        "*.zip files that have already been extracted"
+      ],
+      "organize_by_type": [
+        "Create an 'Installers' folder for .exe and .msi files",
+        "Create a 'Documents' folder with subfolders for business, personal, and forms",
+        "Create a 'Game Development' folder for game-related assets",
+        "Create a '3D Models' folder for .glb files and related assets",
+        "Create an 'AI Projects' folder for AI-related files",
+        "Create a 'Configuration' folder for settings and credential files"
+      ]
+    }
+  }
+}
